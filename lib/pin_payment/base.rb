@@ -27,6 +27,8 @@ module PinPayment
       client             = Net::HTTP.new(uri.host, uri.port)
       client.use_ssl     = true
       client.verify_mode = OpenSSL::SSL::VERIFY_PEER
+      puts "URI class: #{uri.class}"
+      puts "URI methods: #{uri.methods}"
       response           = client.request(
         klass.new(uri.url).tap do |http|
           http.basic_auth(PinPayment.secret_key, '')
